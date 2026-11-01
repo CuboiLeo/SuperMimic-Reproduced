@@ -8,7 +8,6 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 SPEC = importlib.util.spec_from_file_location("run_evaluation_suite", SCRIPTS / "run_evaluation_suite.py")

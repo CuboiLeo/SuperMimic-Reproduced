@@ -113,8 +113,8 @@ def freeze_evaluator(suite, plan, tools):
             "Baseline source has modifications")
     runtime = json.loads(subprocess.check_output([
         plan["python"], "-I", "-B", "-c",
-        "import importlib.metadata,json,sys; print(json.dumps({'python':sys.version,"
-        "'packages':sorted((d.metadata['Name'],d.version) for d in importlib.metadata.distributions())}))",
+        ("import importlib.metadata,json,sys; print(json.dumps({'python':sys.version,"
+         "'packages':sorted((d.metadata['Name'],d.version) for d in importlib.metadata.distributions())}))"),
     ], text=True))
     fingerprint = {"schema_version": 1, "baseline_commit": commit, "runtime": runtime,
                    "python_sha256": digest(plan["python"]),
