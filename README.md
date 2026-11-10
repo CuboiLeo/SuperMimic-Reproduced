@@ -1,6 +1,10 @@
 # SuperMimic-Reproduced
 
-An independent, from-scratch reproduction of **SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model** ([arXiv:2610.28480](https://arxiv.org/abs/2610.28480), CoRL 2026) for the Unitree G1, built on [mjlab](https://github.com/mujocolab/mjlab) / MuJoCo Warp. No official code is released; everything here (motion library, differentiable FK, world model, BPTT trainer, return-based reset sampling, data-parallel training, Appendix-F benchmark) is implemented from the paper.
+> **The official implementation is now available: [HybridRobotics/supermimic](https://github.com/HybridRobotics/supermimic)** (Apache-2.0, released 2026-11-10 by the paper's authors, also built on mjlab). If you want to use or build on SuperMimic, start there.
+>
+> This repository is an independent reproduction written from the paper alone, before the official code existed. It is kept as a record of that reproduction: the design decisions, the experiment log, the full-set BONES-SEED results and the released checkpoint. It shares no code with the official implementation and is no longer actively developed.
+
+An independent, from-scratch reproduction of **SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model** ([arXiv:2610.28480](https://arxiv.org/abs/2610.28480), CoRL 2026) for the Unitree G1, built on [mjlab](https://github.com/mujocolab/mjlab) / MuJoCo Warp. At the time this was written no official code had been released; everything here (motion library, differentiable FK, world model, BPTT trainer, return-based reset sampling, data-parallel training, Appendix-F benchmark) is implemented from the paper.
 
 ![G1 policy tracking BONES-SEED motions](media/g1_boneseed_highlights.gif)
 
@@ -145,6 +149,7 @@ The design documents are in Chinese; a full Chinese version of this README follo
 ## Attribution and license
 
 - Method: Q. Liao, Y. Shao, J. Long, K. Zakka, R. Horowitz, P. Abbeel, K. Sreenath, *SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model*, CoRL 2026, arXiv:2610.28480. This is an independent re-implementation, not affiliated with the authors.
+- Official code: [HybridRobotics/supermimic](https://github.com/HybridRobotics/supermimic) (Apache-2.0). This reproduction predates it, was written from the paper alone, and contains no code from it.
 - mjlab, MuJoCo and MuJoCo Warp are used unmodified under their own licenses. LAFAN1 motions (Ubisoft La Forge, CC BY-NC-ND 4.0), their G1 retargets and the BONES-SEED data are not redistributed; the demo media show reference motions for illustration only and are not covered by this repository's license.
 - Code: [MIT](LICENSE), Copyright (c) 2026 Yuxi Liu.
 
@@ -152,7 +157,11 @@ The design documents are in Chinese; a full Chinese version of this README follo
 
 # 中文版
 
-从零复现 **SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model**（[arXiv:2610.28480](https://arxiv.org/abs/2610.28480)，CoRL 2026），目标机器人 Unitree G1，底座 [mjlab](https://github.com/mujocolab/mjlab) / MuJoCo Warp。论文没有公开代码，这里的动作库、可微 FK、世界模型、BPTT 训练器、基于回报的重置采样、多卡训练、Appendix F 评测全部按论文自己实现，不使用 rsl_rl。
+> **原作者的官方实现已开源：[HybridRobotics/supermimic](https://github.com/HybridRobotics/supermimic)**（Apache-2.0，2026-11-10 由论文作者发布，同样基于 mjlab）。想使用或在 SuperMimic 上继续开发，请以官方版本为准。
+>
+> 本仓库是官方代码发布前、仅依据论文做的独立复现，保留下来作为记录：设计决策、实验日志、BONES-SEED 全量结果和已发布的检查点。与官方实现没有代码上的关系，后续不再主动开发。
+
+从零复现 **SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model**（[arXiv:2610.28480](https://arxiv.org/abs/2610.28480)，CoRL 2026），目标机器人 Unitree G1，底座 [mjlab](https://github.com/mujocolab/mjlab) / MuJoCo Warp。编写时论文尚未公开代码，这里的动作库、可微 FK、世界模型、BPTT 训练器、基于回报的重置采样、多卡训练、Appendix F 评测全部按论文自己实现，不使用 rsl_rl。
 
 开头的 GIF：同一个策略，按论文的观测口径在 BONES-SEED 全量（12.99 万条）上训练，四卡 RTX 5090 共 7.1 h。实体 = 仿真中的策略（MuJoCo Warp，Appendix F 的确定性协议），蓝色半透明 = 参考动作。片段依次为：高跳、趴着起身、原地 360° 旋转、单腿跳、慢跑接 270° 转体跳再趴下爬行、尺蠖爬行。18 段的完整版在 [`media/g1_boneseed_showcase.mp4`](media/g1_boneseed_showcase.mp4)。
 
@@ -224,5 +233,6 @@ The design documents are in Chinese; a full Chinese version of this README follo
 ## 致谢与许可
 
 - 方法：Q. Liao, Y. Shao, J. Long, K. Zakka, R. Horowitz, P. Abbeel, K. Sreenath, *SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model*, CoRL 2026, arXiv:2610.28480。本仓库为独立复现，与作者无关。
+- 官方代码：[HybridRobotics/supermimic](https://github.com/HybridRobotics/supermimic)（Apache-2.0）。本复现早于官方代码，仅依据论文编写，不含其任何代码。
 - mjlab、MuJoCo、MuJoCo Warp 按各自许可原样使用。LAFAN1 动作（Ubisoft La Forge，CC BY-NC-ND 4.0）、其 G1 重定向数据和 BONES-SEED 数据均不随仓库分发；演示视频中的参考动作仅作展示，不在本仓库许可范围内。
 - 代码：[MIT](LICENSE)，Copyright (c) 2026 Yuxi Liu。
